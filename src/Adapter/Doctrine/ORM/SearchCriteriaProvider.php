@@ -44,7 +44,9 @@ class SearchCriteriaProvider implements QueryBuilderProcessorInterface
                         continue;
                     }
                 }
-                $queryBuilder->andWhere($this->getSearchComparison($column, $search));
+                $searchUPPER = $queryBuilder->expr()->literal("%".strtoupper($search)."%");
+                $field = preg_replace('/\./', '_', $column->getField(), (substr_count($column->getField(), '.') - 1));
+                $queryBuilder->andWhere(new Comparison("UPPER($field)", $column->getOperator(), $searchUPPER));
             }
         }
     }

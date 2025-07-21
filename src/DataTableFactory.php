@@ -48,6 +48,7 @@ class DataTableFactory
         return (new DataTable($this->eventDispatcher, $this->exporterManager, array_merge($config['options'] ?? [], $options), $this->instantiator))
             ->setRenderer($this->renderer)
             ->setMethod($config['method'] ?? Request::METHOD_POST)
+            ->setUrl($config['url'] ?? '')
             ->setPersistState($config['persist_state'] ?? 'fragment')
             ->setTranslationDomain($config['translation_domain'] ?? 'messages')
             ->setLanguageFromCDN($config['language_from_cdn'] ?? true)

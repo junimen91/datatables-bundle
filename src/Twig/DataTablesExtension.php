@@ -33,6 +33,7 @@ class DataTablesExtension extends AbstractExtension
                 return json_encode([
                     'name' => $dataTable->getName(),
                     'method' => $dataTable->getMethod(),
+                    'url' => $dataTable->getUrl(),
                     'state' => $dataTable->getPersistState(),
                     'options' => [
                         'language' => $this->getLanguageSettings($dataTable),
@@ -47,9 +48,9 @@ class DataTablesExtension extends AbstractExtension
      */
     private function getLanguageSettings(DataTable $dataTable)
     {
-        if ($dataTable->isLanguageFromCDN() && null !== ($cdnFile = $this->getCDNLanguageFile())) {
-            return ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/' . $cdnFile];
-        }
+//        if ($dataTable->isLanguageFromCDN() && null !== ($cdnFile = $this->getCDNLanguageFile())) {
+//            return ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/' . $cdnFile];
+//        }
 
         $domain = $dataTable->getTranslationDomain();
 

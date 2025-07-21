@@ -20,7 +20,7 @@
       "issues": "https://github.com/omines/datatables-bundle/issues"
     },
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.1",
         "symfony/event-dispatcher": "^6.4|^7.1",
         "symfony/framework-bundle": "^6.4|^7.1",
         "symfony/options-resolver": "^6.4|^7.1",
@@ -41,8 +41,8 @@
         "doctrine/persistence": "^3.4.0|^4.0.0",
         "friendsofphp/php-cs-fixer": "^3.75.0",
         "mongodb/mongodb": "^1.20.0|^2.1.0",
-        "ocramius/package-versions": "^2.9",
-        "openspout/openspout": "^4.23",
+        "ocramius/package-versions": "^2.10",
+        "openspout/openspout": "^4.30",
         "phpoffice/phpspreadsheet": "^2.3.3|^3.9.2|^4.4.0",
         "phpstan/extension-installer": "^1.4.3",
         "phpstan/phpstan": "^2.1.17",

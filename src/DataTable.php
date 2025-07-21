@@ -71,6 +71,7 @@ class DataTable
     protected EventDispatcherInterface $eventDispatcher;
     protected DataTableExporterManager $exporterManager;
     protected string $method = Request::METHOD_POST;
+    protected string $url;
 
     /** @var array<string, mixed> */
     protected array $options;
@@ -233,6 +234,12 @@ class DataTable
         return $this->method;
     }
 
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+
     public function getName(): string
     {
         return $this->name;
@@ -361,6 +368,15 @@ class DataTable
         return $this->options;
     }
 
+    /**
+     * @param $options
+     * @return array
+     */
+    public function setOptions($options)
+    {
+        $this->options = $options;
+    }
+
     public function getOption(string $name): mixed
     {
         return $this->options[$name] ?? null;
@@ -389,7 +405,12 @@ class DataTable
     public function setMethod(string $method): static
     {
         $this->method = $method;
+        return $this;
+    }
 
+    public function setUrl(string $url): self
+    {
+        $this->url = $url;
         return $this;
     }
 

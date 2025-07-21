@@ -4,7 +4,11 @@
     <thead>
     <tr>
         {% for column in datatable.columns %}
-            <th>{{ column.label|trans }}</th>
+            {% set w = "" %}
+            {% if column.width is not empty %}
+                {% set w = 'width:' ~ column.width %}
+            {% endif %}
+            <th style="{{ w }}">{{ column.label|trans }}</th>
         {% endfor %}
     </tr>
     {% if datatable.option('searching') and (columnFilter ?? '') in ['both', 'thead'] %}
@@ -45,7 +49,12 @@
                     $(function () {
                         $('#{{ datatable.name }}-column-{{ column.index }}').on(
                             "keyup change",
-                            delay(function () {
+                            delay(function (event) {
+                                    if (event.type == "keyup") {
+                                        // EVENTO DE ENTER
+                                        if (event.keyCode != 13)
+                                            return;
+                                    }
                                     const column = table.columns({{ column.index }});
                                     const newValue = $(this).val();
 

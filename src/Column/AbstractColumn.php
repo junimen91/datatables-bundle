@@ -89,6 +89,8 @@ abstract class AbstractColumn
             ->setDefaults([
                 'label' => null,
                 'data' => null,
+                'type' => null,
+                'width' => null,
                 'field' => null,
                 'propertyPath' => null,
                 'visible' => true,
@@ -107,6 +109,8 @@ abstract class AbstractColumn
             ])
             ->setAllowedTypes('label', ['null', 'string'])
             ->setAllowedTypes('data', ['null', 'string', 'callable'])
+            ->setAllowedTypes('width', ['null', 'string'])
+            ->setAllowedTypes('type', ['null', 'string'])
             ->setAllowedTypes('field', ['null', 'string'])
             ->setAllowedTypes('propertyPath', ['null', 'string'])
             ->setAllowedTypes('visible', 'boolean')
@@ -142,6 +146,16 @@ abstract class AbstractColumn
     public function getLabel(): string
     {
         return $this->options['label'] ?? "{$this->dataTable->getName()}.columns.{$this->getName()}";
+    }
+
+    public function getType()
+    {
+        return $this->options['type'];
+    }
+
+    public function getWidth()
+    {
+        return $this->options['width'];
     }
 
     public function getField(): ?string
